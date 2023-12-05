@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
-@Table(name = "blocks")
+@Table(name = "blocks", uniqueConstraints =  { @UniqueConstraint(columnNames = { "property_id", "start_date" , "end_date"}) } )
 public class Block {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

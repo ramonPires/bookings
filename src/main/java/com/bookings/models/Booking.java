@@ -14,7 +14,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
-@Table(name = "bookings")
+@Table(name = "bookings", uniqueConstraints =  { @UniqueConstraint(columnNames = { "property_id", "checkin_date" , "checkout_date"}) })
 public class Booking implements Serializable {
 
     @Id
@@ -36,7 +36,7 @@ public class Booking implements Serializable {
     private Property property;
 
     @Embedded
-    @JsonUnwrapped(enabled = false)
+    @JsonUnwrapped
     @Valid
     private Guest guest;
 

@@ -196,6 +196,21 @@ class BookingControllerTest {
         verify(bookingService).updateBooking(any(Booking.class));
     }
 
+    @Test
+    @DisplayName("Should rebook a booking and return a status code 200")
+    public void shouldRebookABooking() throws Exception {
+        var bookingId = 1L;
+        Booking booking = validNewBooking(Month.DECEMBER);
+        when(bookingService.rebook(any(Booking.class))).thenReturn(booking);
+        mockMvc.perform(put("/bookings/{id}/rebook", bookingId)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(toJson(booking)))
+                .andDo(print())
+                .andExpect(content().json(toJson(booking)))
+                .andExpect(status().isOk());
+        verify(bookingService).rebook(any(Booking.class));
+    }
+
     private String toJson(Booking booking) throws JsonProcessingException {
         return objectMapper.writeValueAsString(booking);
     }

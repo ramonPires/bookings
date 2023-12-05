@@ -11,8 +11,3 @@ INSERT INTO properties (id, name, owner_id, manager_id) VALUES (4, 'Fancy Beach 
 INSERT INTO properties (id, name, owner_id, manager_id) VALUES (5, 'Fancy Beach House 2', 2, 1);
 INSERT INTO properties (id, name, owner_id, manager_id) VALUES (6, 'Fancy Beach House 3', 2, 1);
 
-INSERT INTO blocks (id, start_date, end_date, property_id) VALUES (1, '2024-01-20', '2024-01-25', 1);
-
-
-
-

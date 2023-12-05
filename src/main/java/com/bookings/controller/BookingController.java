@@ -35,6 +35,13 @@ public class BookingController {
         return ResponseEntity.ok(updatedBooking);
     }
 
+    @PutMapping(path = "/{id}/rebook")
+    public ResponseEntity<Booking> rebook(@Valid @RequestBody Booking booking, @PathVariable Long id) {
+        booking.setId(id);
+        return ResponseEntity.ok(this.bookingService.rebook(booking));
+    }
+
+
     @DeleteMapping(path = "/{id}/cancel")
     public void cancel(@PathVariable Long id) {
         this.bookingService.cancelBooking(id);
